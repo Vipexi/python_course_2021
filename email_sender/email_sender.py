@@ -2,7 +2,12 @@
 
 import smtplib
 from email.message import EmailMessage
-
+from email.mime.multipart import MIMEMultipart
+from email.mime.base import MIMEBase
+from email.mime.text import MIMEText
+from email.utils import COMMASPACE
+from email import encoders 
+# I found that you needed to import many modules, but it was total gibberish to me.
 
 def send_email(subject,body):
     gmail_user = "vipezi13@gmail.com"
@@ -10,10 +15,14 @@ def send_email(subject,body):
     with open("password.txt") as filereader:
         gmail_password = filereader.read()
 
+    #after= datetime.datetime.now()
+    #print ("Current date and time : ")
+    #print (now.strftime("%Y-%m-%d %H:%M:%S"))
+    #return after
 
     to = ['vipezi13@gmail.com']
     #subject ='error from application'
-    #body = 'error message'
+    #body = after
 
     msg = EmailMessage ()
     msg.set_content(body)
@@ -56,5 +65,5 @@ def send_email(subject,body):
 
 
 
-if __name__ == "__main__":
-    send_email("Testing with main","Testing passed!")
+    #if __name__ == "__main__":
+        #send_email("The game has strated", now)
