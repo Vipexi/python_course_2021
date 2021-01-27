@@ -40,6 +40,6 @@ normal_numbers()
 # Here I also made two separate lists like in the easy task 
 # and sorted them the same way.
 # I found this line which compares the lists with each other
-# I don't understand the code yet myself :D
+# I don't understand the code yet myself :D  "zip()""
 # Then I printed the results using f strings with different variables
 # Used if statements to differentiate based on how many you got right
