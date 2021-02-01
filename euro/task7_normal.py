@@ -1,5 +1,8 @@
 #! /usr/bin/python3
 
+# original author: Ville Vihtalahti
+# I the author grant the use of this code for teaching: yes
+
 # Normal task:
 # Now that you have your line, lets check how many you got right.
 # Make another function that returns the winning numbers and then it checks,
@@ -14,6 +17,7 @@ def normal_numbers():
     star=random.sample(range(1, 11), 2)
     star=sorted(star)
     print(f"These are your game numbers: {eurojackpot} {star}")
+    return eurojackpot
     winning_line(eurojackpot, star)
 
 
@@ -22,8 +26,20 @@ def winning_line(eurojackpot, star):
     winner=sorted(winner)
     extra_numbers=random.sample(range(1, 11), 2)
     extra_numbers=sorted(extra_numbers)
-    your_score=[eurojackpot for eurojackpot, winner in zip(eurojackpot, winner) if eurojackpot == winner]
-    your_star_score=[star for star, extra_numbers in zip(star, extra_numbers) if star == extra_numbers]
+    
+    your_score=[]
+    your_star_score=[]
+    
+    for number in eurojackpot :
+        for number2 in winner :
+            if number == number2:
+                your_score.append(number)
+
+    for number in star:
+        for number2 in extra_numbers:
+            if number == number2:
+                your_star_score.append(number)
+
     print(f"Here is the winning line: {winner} {extra_numbers}")
     if len(your_score) == 0 and len(your_star_score) == 0:
         print("You got 0 right!")
@@ -36,10 +52,10 @@ def winning_line(eurojackpot, star):
 
 normal_numbers()
 
+
 #Solution:
 # Here I also made two separate lists like in the easy task 
 # and sorted them the same way.
-# I found this line which compares the lists with each other
-# I don't understand the code yet myself :D  "zip()""
+# Then using nested for loop to compare the numbers, and append the numbers that are same
 # Then I printed the results using f strings with different variables
 # Used if statements to differentiate based on how many you got right

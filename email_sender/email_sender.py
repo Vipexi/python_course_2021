@@ -2,11 +2,6 @@
 
 import smtplib
 from email.message import EmailMessage
-from email.mime.multipart import MIMEMultipart
-from email.mime.base import MIMEBase
-from email.mime.text import MIMEText
-from email.utils import COMMASPACE
-from email import encoders 
 # I found that you needed to import many modules, but it was total gibberish to me.
 
 def send_email(subject,body):

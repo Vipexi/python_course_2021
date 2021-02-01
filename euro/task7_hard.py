@@ -1,12 +1,14 @@
 #! /usr/bin/python3
+
 # original author: Ville Vihtalahti
 # I the author grant the use of this code for teaching: yes
 
 # Hard task:
-# In the hard task, change your code, so that you can decide the numbers
-# you want to play with it. Create a loop so that the game goes on and on,
+# In this hard task, change your code, so that you can decide the numbers
+# you want to play with it. You can use the lists or whatever method used from the normal task.
+# Create a loop so that the game goes on and on.
 # until the player wants to exit the game.
-# Make it so that the player doesn't accept strings, when asking for numbers.
+# Make it so that the code doesn't accept strings, when asking for numbers.
 
 import random
 
@@ -57,9 +59,19 @@ def winning_line(eurojackpot_numbers, star_numbers):
     winner=sorted(winner)
     extra_numbers=random.sample(range(1, 11), 2)
     extra_numbers=sorted(extra_numbers)
+
+    your_score=[]
+    your_star_score=[]
     
-    your_score=[eurojackpot_numbers for eurojackpot_numbers, winner in zip(eurojackpot_numbers, winner) if eurojackpot_numbers == winner]
-    your_star_score=[star_numbers for star_numbers, extra_numbers in zip(star_numbers, extra_numbers) if star_numbers == extra_numbers]
+    for number in eurojackpot_numbers :
+        for number2 in winner :
+            if number == number2:
+                your_score.append(number)
+
+    for number in star_numbers:
+        for number2 in extra_numbers:
+            if number == number2:
+                your_star_score.append(number)
     
     print(f"Here is the winning line: {winner} {extra_numbers}")
     if len(your_score) == 0 and len(your_star_score) == 0:
